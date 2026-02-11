@@ -168,6 +168,19 @@
                 }
             ];
 
+            // GLOSSARY DATA (Lazy Style Definitions)
+            const glossaryData = [
+                { term: "Comprehensible Input (CI)", def: "Đầu vào dễ hiểu. Nghe/Đọc những gì mình hiểu được (80-90%). Không cần hiểu hết 100%, chỉ cần hiểu ý chính. Giống như em bé nghe bố mẹ nói chuyện." },
+                { term: "TPRS", def: "Dạy ngôn ngữ qua kể chuyện. Thay vì bắt chia động từ, ta kể một câu chuyện thú vị để học viên 'thấm' ngữ pháp một cách tự nhiên." },
+                { term: "Silent Period", def: "Giai đoạn 'Im lặng'. Thời gian đầu, học viên chỉ nghe và quan sát, chưa sẵn sàng nói. Đừng ép họ nói sớm kẻo họ sợ." },
+                { term: "TPR (Phản xạ toàn thân)", def: "Dùng hành động để hiểu nghĩa. Ví dụ: Nói 'Đứng lên' + Ra hiệu đứng lên -> Học viên làm theo. Không cần dịch." },
+                { term: "Realia (Vật thật)", def: "Đạo cụ thật. Dạy 'Táo' thì cầm quả táo thật cắn một miếng. Hiệu quả và sinh động hơn tranh ảnh." },
+                { term: "Affective Filter", def: "Bộ lọc cảm xúc/Sự sợ hãi. Khi sợ sai, não sẽ 'đóng cửa'. Nhiệm vụ của ta là làm cho học viên vui vẻ để não 'mở cửa'." },
+                { term: "Isolating Language (Đơn lập)", def: "Tiếng Việt! Từ ngữ KHÔNG bao giờ biến hình. 'Ăn' thì mãi là 'ăn', không có 'ate/eaten'. Đây là lợi thế lớn nhất!" },
+                { term: "Cognitive Load", def: "Sức chịu đựng của não. Đừng bắt học viên nhớ quá nhiều thứ cùng lúc (từ vựng + ngữ pháp + dấu...) kẻo não bị 'treo'." },
+                { term: "Facial Cues", def: "Manh mối khuôn mặt. Học viên nhìn miệng và biểu cảm của bạn để đoán nghĩa. Vì vậy, giáo viên cần biểu cảm rõ ràng." }
+            ];
+
             const handleAnswer = (isCorrect, index) => {
                 setSelectedOption(index);
                 if (isCorrect) setScore(score + 1);
@@ -199,7 +212,7 @@
 
                             {stage === 'landing' && (
                                 <div className="text-center space-y-6">
-                                    <div className="text-6xl animate-bounce">�</div>
+                                    <div className="text-6xl animate-bounce">👋</div>
 
                                     <div className="space-y-2">
                                         <h2 className="text-3xl font-bold text-gray-800">Chào mừng Cộng sự!</h2>
@@ -244,6 +257,15 @@
                                     >
                                         Tôi đã hiểu tư duy. Bắt đầu thôi! 🚀
                                     </button>
+
+                                    <div className="mt-4">
+                                        <button
+                                            onClick={() => setStage('glossary')}
+                                            className="text-blue-600 hover:text-blue-800 text-sm font-medium hover:underline flex items-center justify-center gap-2 mx-auto"
+                                        >
+                                            <span className="text-lg">📖</span> Tra cứu thuật ngữ "siêu nhanh" (5 giây)
+                                        </button>
+                                    </div>
                                 </div>
                             )}
 
@@ -357,6 +379,37 @@
                                     >
                                         Tải lại Module Đào tạo
                                     </button>
+                                </div>
+                            )}
+
+                            {stage === 'glossary' && (
+                                <div>
+                                    <div className="flex justify-between items-center mb-6">
+                                        <h2 className="text-xl font-bold text-gray-800">📖 Từ Điển "Bình Dân Học Vụ"</h2>
+                                        <button
+                                            onClick={() => setStage('landing')}
+                                            className="text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors"
+                                        >
+                                            Quay lại ↩️
+                                        </button>
+                                    </div>
+                                    <div className="grid gap-4 md:grid-cols-2">
+                                        {glossaryData.map((item, index) => (
+                                            <div key={index} className="p-4 bg-yellow-50 rounded-lg border border-yellow-100 shadow-sm hover:shadow-md transition-shadow">
+                                                <h3 className="font-bold text-yellow-800 mb-2">{item.term}</h3>
+                                                <p className="text-sm text-gray-700 leading-relaxed">{item.def}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="mt-8 text-center">
+                                        <p className="text-sm text-gray-500 italic mb-4">"Đừng để thuật ngữ làm bạn sợ. Hãy hiểu bản chất và dạy bằng trái tim."</p>
+                                        <button
+                                            onClick={() => setStage('lesson')}
+                                            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded lg transition-colors shadow-sm"
+                                        >
+                                            Đã hiểu thuật ngữ, vào bài học thôi! ➡️
+                                        </button>
+                                    </div>
                                 </div>
                             )}
 
