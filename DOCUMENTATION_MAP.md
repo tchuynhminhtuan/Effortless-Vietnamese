@@ -10,6 +10,7 @@
 *   **[MANIFESTO.md](foundation/MANIFESTO.md)**: "Kinh thánh" thương hiệu. Định nghĩa Lazy Style, đối tượng khán giả, và cam kết chất lượng.
 *   **[Branding](foundation/branding.md)**: Bộ nhận diện thương hiệu (Logo, Slogan, Banner).
 *   **[Linguistic Foundation](content/research/linguistic_foundation.md)**: Cơ sở ngữ học (đã cập nhật theo Gemini Deep Research). Giải thích tại sao chọn CI/TPRS và Hand Gestures.
+*   **[Methodology Comparison](content/research/methodology_comparison.md)**: So sánh Lazy Style vs Effortless English (AJ Hoge). Đâu là sự khác biệt?
 *   **[README.md](README.md)**: Tổng quan dự án và hướng dẫn đóng góp.
 
 ---
