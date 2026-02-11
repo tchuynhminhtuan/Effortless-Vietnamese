@@ -70,7 +70,7 @@
                 {
                     title: "Module 7: Phân Loại Danh Từ (Classifiers)",
                     content: "Mục tiêu: Phân biệt 'Con' (Động vật) vs 'Cái' (Đồ vật). Phương pháp: Visual Association (Liên kết hình ảnh) qua sơ đồ gia đình/vườn thú.",
-                    icon: "�"
+                    icon: "📊"
                 }
             ];
 
@@ -120,6 +120,51 @@
                         { text: "Xây dựng sự tự tin, giảm rào cản tâm lý & thụ đắc 50-100 từ vựng cốt lõi", isCorrect: true }
                     ],
                     rationale: "Chính xác. Giai đoạn này tập trung xây dựng nền tảng từ vựng thụ động (Passive Vocabulary) và thái độ học tập tích cực."
+                },
+                {
+                    question: "Về phong cách giảng dạy (Teaching Style), tại sao chúng ta chọn 'Chill & Slow' thay vì năng lượng cao (High Energy)?",
+                    options: [
+                        { text: "Vì giảng viên lười, không muốn diễn", isCorrect: false },
+                        { text: "Để tạo môi trường học tập bền vững (Sustainability) & giảm lo âu cho người học", isCorrect: true },
+                        { text: "Vì năng lượng cao tốn nhiều tiền điện", isCorrect: false }
+                    ],
+                    rationale: "Chính xác. Năng lượng quá cao (Hype) thường gây mệt mỏi cho cả người dạy lẫn người học về lâu dài. Phong cách 'Chill' mô phỏng cuộc hội thoại thân mật đời thực, giúp não bộ thư giãn để nạp kiến thức."
+                },
+                {
+                    question: "Từ góc độ sư phạm, tại sao Avatar hoạt hình (Memoji/Animoji) bị CẤM trong các bài học cốt lõi?",
+                    options: [
+                        { text: "Vì nhìn chúng thiếu chuyên nghiệp", isCorrect: false },
+                        { text: "Vì chúng không truyền tải được 'Manh mối khuôn mặt' (Facial Cues) & Khẩu hình miệng thực tế", isCorrect: true },
+                        { text: "Vì chi phí thiết kế quá cao", isCorrect: false }
+                    ],
+                    rationale: "Chuẩn xác. Học ngôn ngữ không chỉ là nghe âm thanh mà còn là 'đọc' khuôn mặt (Lip reading & Micro-expressions). Avatar làm mất đi kênh thông tin quan trọng này."
+                },
+                {
+                    question: "Rủi ro lớn nhất của việc sử dụng Phụ đề song ngữ hoặc Giải thích bằng tiếng Anh (Translation) là gì?",
+                    options: [
+                        { text: "Gây ra thói quen 'Dịch thầm' (Mental Translation) ngăn cản tư duy trực diện bằng tiếng Việt", isCorrect: true },
+                        { text: "Làm video bị rối mắt", isCorrect: false },
+                        { text: "Người xem sẽ không chịu mua khóa học", isCorrect: false }
+                    ],
+                    rationale: "Chính xác. Nếu có tiếng Anh, não bộ sẽ lười biếng bám vào đó. Mục tiêu của CI là xây dựng 'Mạng lưới thần kinh tiếng Việt' độc lập, không qua trung gian tiếng mẹ đẻ."
+                },
+                {
+                    question: "Giao thức xử lý lỗi sai (Error Correction Protocol) trong phương pháp này là gì?",
+                    options: [
+                        { text: "Ngắt lời ngay lập tức để sửa cho nhớ", isCorrect: false },
+                        { text: "Ghi chép lại và mắng vốn sau buổi học", isCorrect: false },
+                        { text: "Lờ đi (Ignore) hoặc nói lại câu đúng một cách tự nhiên (Recast), tuyệt đối không ngắt dòng chảy", isCorrect: true }
+                    ],
+                    rationale: "Tuyệt vời. Việc ngắt lời để sửa ngữ pháp sẽ làm tăng 'Bộ lọc cảm xúc' (khiến người học sợ hãi/mất hứng). Sự trôi chảy (Flow) và Sự tự tin quan trọng hơn độ chính xác (Accuracy) ở giai đoạn đầu."
+                },
+                {
+                    question: "Tại sao nguyên tắc '3 KHÔNG' (Trong đó có Không Than Vãn/Drama) lại quan trọng cho một kênh giáo dục?",
+                    options: [
+                        { text: "Để bảo vệ hình ảnh cá nhân giảng viên", isCorrect: false },
+                        { text: "Tạo ra 'Vùng an toàn tâm lý' (Psychological Safe Harbor) giúp não bộ người học mở cửa tiếp thu", isCorrect: true },
+                        { text: "Để tuân thủ chính sách của YouTube", isCorrect: false }
+                    ],
+                    rationale: "Chính xác. Căng thẳng (Stress/Cortisol) là kẻ thù của trí nhớ. Chúng ta bán 'Sự bình yên & Cảm hứng' đi kèm với ngôn ngữ."
                 }
             ];
 
@@ -153,18 +198,51 @@
                         <div className="p-8">
 
                             {stage === 'landing' && (
-                                <div className="text-center">
-                                    <div className="text-5xl mb-6">�</div>
-                                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Module Đào Tạo: Phương Pháp CI & TPRS</h2>
-                                    <div className="text-left bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8 text-gray-600 text-sm leading-relaxed">
-                                        <p className="mb-2"><strong>Mục tiêu module:</strong> Trang bị kiến thức nền tảng về phương pháp Comprehensible Input (Đầu vào dễ hiểu) và TPRS (Teaching Proficiency through Reading and Storytelling).</p>
-                                        <p><strong>Đối tượng:</strong> Giảng viên nòng cốt & Cộng sự phát triển nội dung.</p>
+                                <div className="text-center space-y-6">
+                                    <div className="text-6xl animate-bounce">�</div>
+
+                                    <div className="space-y-2">
+                                        <h2 className="text-3xl font-bold text-gray-800">Chào mừng Cộng sự!</h2>
+                                        <p className="text-gray-500 font-medium">Bạn đã sẵn sàng để THAY ĐỔI hoàn toàn cách dạy tiếng Việt?</p>
                                     </div>
+
+                                    <div className="text-left bg-blue-50 p-6 rounded-xl border border-blue-100 text-gray-700 text-sm leading-relaxed space-y-4 shadow-sm">
+                                        <div className="flex gap-3">
+                                            <span className="text-2xl">🤔</span>
+                                            <div>
+                                                <p className="font-bold text-blue-800 mb-1">Vấn đề cũ kỹ:</p>
+                                                <p>Người nước ngoài thường "sợ chết khiếp" với 6 thanh điệu và ngữ pháp rắc rối của chúng ta. Họ học vẹt, nhớ trước quên sau.</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-3">
+                                            <span className="text-2xl">💡</span>
+                                            <div>
+                                                <p className="font-bold text-blue-800 mb-1">Giải pháp của chúng ta (Lazy Style):</p>
+                                                <p>Chúng ta KHÔNG dạy họ "học". Chúng ta giúp họ <strong>"sống"</strong> cùng tiếng Việt. Chỉ cần kể chuyện, dùng hành động tay chân, và cười đùa.</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-3">
+                                            <span className="text-2xl">🚫</span>
+                                            <div>
+                                                <p className="font-bold text-blue-800 mb-1">Quy tắc vàng:</p>
+                                                <ul className="list-disc pl-4 space-y-1">
+                                                    <li>Không giải thích ngữ pháp (No Grammar).</li>
+                                                    <li>Không sửa lỗi manh mún (No Correction).</li>
+                                                    <li>Không áp lực (No Stress).</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white p-4 rounded-lg border border-gray-100 text-sm text-gray-500 italic">
+                                        "Hãy tưởng tượng bạn đang nói chuyện với một đứa trẻ 3 tuổi thông minh. Chậm rãi, rõ ràng, và đầy tình thương."
+                                    </div>
+
                                     <button
                                         onClick={() => setStage('lesson')}
-                                        className="w-full md:w-auto px-8 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-colors shadow-sm"
+                                        className="w-full md:w-auto px-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
                                     >
-                                        Bắt Đầu Nghiên Cứu Chương Trình ➡️
+                                        Tôi đã hiểu tư duy. Bắt đầu thôi! 🚀
                                     </button>
                                 </div>
                             )}
