@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Án Tiếng Việt Tự Nhiên - Tài Liệu Sư Phạm</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const App = () => {
+            const [stage, setStage] = useState('landing'); // landing, lesson, quiz, result
+            const [currentQuestion, setCurrentQuestion] = useState(0);
+            const [score, setScore] = useState(0);
+            const [showRationale, setShowRationale] = useState(false);
+            const [selectedOption, setSelectedOption] = useState(null);
+
+            // SYLLABUS DATA (Academic & Pedagogical Focus)
+            const lessons = [
+                {
+                    title: "Module 1: Định Danh & Sự Tồn Tại (Identity & Existence)",
+                    content: "Mục tiêu: Giới thiệu bản thân ('Tôi là...', Tên riêng). Kỹ thuật: Pointing (Chỉ trỏ) trực tiếp vào chủ thể. Nguyên tắc: Comprehensible Input (Đầu vào dễ hiểu) qua ngữ cảnh, không giải thích ngữ pháp.",
+                    icon: "👤"
+                },
+                {
+                    title: "Module 2: Phản Xạ Toàn Thân (TPR - Actions)",
+                    content: "Mục tiêu: Động từ chuyển động (Đứng, Ngồi, Đi). Phương pháp: Total Physical Response (Phản xạ toàn thân). Yêu cầu: Học viên phản hồi bằng hành động vật lý, tuân thủ giai đoạn 'Silent Period' (Chưa yêu cầu nói).",
+                    icon: "🏃"
+                },
+                {
+                    title: "Module 3: Sở Hữu & Tương Tác Đồ Vật (Possession)",
+                    content: "Mục tiêu: Cấu trúc sở hữu ('Tôi có...'). Đạo cụ: Vật dụng thực tế (Realia). Kỹ thuật: Action Sequences (Chuỗi hành động) Cầm - Nắm - Đưa.",
+                    icon: "🎒"
+                },
+                {
+                    title: "Module 4: Nhu Cầu Sinh Tồn (Survival Needs)",
+                    content: "Mục tiêu: Các động từ thiết yếu (Ăn, Uống, Ngủ). Kỹ thuật: Gesture & Facial Expression (Cử chỉ & Biểu cảm) để diễn tả trạng thái sinh lý (Đói, Khát).",
+                    icon: "🍔"
+                },
+                {
+                    title: "Module 5: Cảm Xúc & Phản Ứng (Affective Filter)",
+                    content: "Mục tiêu: Thể hiện quan điểm (Thích/Ghét). Phương pháp: Sử dụng đạo cụ gây tranh cãi (về hương vị/hình ảnh) để kích thích phản ứng cảm xúc tự nhiên.",
+                    icon: "😍"
+                },
+                {
+                    title: "Module 6: Định Vị Không Gian (Spatial Concepts)",
+                    content: "Mục tiêu: Giới từ chỉ vị trí (Trên, Dưới, Trong). Kỹ thuật: Micro-Storytelling (Kể chuyện siêu ngắn) về việc tìm kiếm đồ vật bị mất.",
+                    icon: "📍"
+                },
+                {
+                    title: "Module 7: Phân Loại Danh Từ (Classifiers)",
+                    content: "Mục tiêu: Phân biệt 'Con' (Động vật) vs 'Cái' (Đồ vật). Phương pháp: Visual Association (Liên kết hình ảnh) qua sơ đồ gia đình/vườn thú.",
+                    icon: "�"
+                }
+            ];
+
+            // QUIZ DATA (Standardized Terminology)
+            const quizData = [
+                {
+                    question: "Đâu là ưu thế ngôn ngữ học chính của tiếng Việt đối với người học nước ngoài ở giai đoạn sơ cấp?",
+                    options: [
+                        { text: "Hệ thống chia động từ phức tạp (Verb Conjugation)", isCorrect: false },
+                        { text: "Sự biến đổi hình thái từ vựng (Inflection)", isCorrect: false },
+                        { text: "Tính chất đơn lập (Isolating Language) - Từ vựng không biến đổi hình thái", isCorrect: true }
+                    ],
+                    rationale: "Chính xác. Tiếng Việt là ngôn ngữ đơn lập. Việc không chia động từ hay biến đổi danh từ theo giống/số giúp giảm thiểu đáng kể tải nhận thức (Cognitive Load) cho người học."
+                },
+                {
+                    question: "Vai trò của phương pháp TPR (Total Physical Response) trong giai đoạn 'Silent Period' là gì?",
+                    options: [
+                        { text: "Tăng cường hoạt động thể chất cho lớp học", isCorrect: false },
+                        { text: "Kiểm tra mức độ hiểu (Comprehension Check) mà không gây áp lực nói", isCorrect: true },
+                        { text: "Tạo không khí náo nhiệt để thu hút sự chú ý", isCorrect: false }
+                    ],
+                    rationale: "Chính xác. Việc ép buộc sản sinh ngôn ngữ (Forced Output) quá sớm sẽ làm tăng 'Bộ lọc cảm xúc' (Affective Filter), cản trở quá trình thụ đắc."
+                },
+                {
+                    question: "Trong giảng dạy Thanh điệu (Tones), công cụ trực quan nào được khuyến nghị sử dụng?",
+                    options: [
+                        { text: "Biểu đồ phân tích tần số âm thanh (Hz)", isCorrect: false },
+                        { text: "Cử chỉ tay (Hand Gestures) mô phỏng hướng di chuyển của cao độ", isCorrect: true },
+                        { text: "Bài tập chép phạt để ghi nhớ ký tự", isCorrect: false }
+                    ],
+                    rationale: "Chính xác. Thanh điệu bản chất là cao độ (Pitch). Sử dụng cử chỉ tay giúp não bộ hình tượng hóa hướng đi của âm thanh (Visual Pitch Contour)."
+                },
+                {
+                    question: "Mục đích của khoảng lặng (Processing Time) 3-5 giây sau mỗi câu hỏi/hành động là gì?",
+                    options: [
+                        { text: "Để giảng viên nghỉ ngơi", isCorrect: false },
+                        { text: "Để não bộ người học liên kết âm thanh với hình ảnh/ý nghĩa", isCorrect: true },
+                        { text: "Do lỗi kỹ thuật trong quá trình hậu kỳ", isCorrect: false }
+                    ],
+                    rationale: "Chính xác. Tốc độ xử lý thông tin của người học sơ cấp chậm hơn nhiều so với người bản xứ. Khoảng lặng là cần thiết để quá trình 'Mapping' (Ánh xạ) diễn ra."
+                },
+                {
+                    question: "Mục tiêu đầu ra (Learning Outcome) sau 10 bài học đầu tiên là gì?",
+                    options: [
+                        { text: "Sử dụng thành thạo ngữ pháp nâng cao", isCorrect: false },
+                        { text: "Hoàn thiện kỹ năng Viết học thuật", isCorrect: false },
+                        { text: "Xây dựng sự tự tin, giảm rào cản tâm lý & thụ đắc 50-100 từ vựng cốt lõi", isCorrect: true }
+                    ],
+                    rationale: "Chính xác. Giai đoạn này tập trung xây dựng nền tảng từ vựng thụ động (Passive Vocabulary) và thái độ học tập tích cực."
+                }
+            ];
+
+            const handleAnswer = (isCorrect, index) => {
+                setSelectedOption(index);
+                if (isCorrect) setScore(score + 1);
+                setShowRationale(true);
+            };
+
+            const nextQuestion = () => {
+                if (currentQuestion < quizData.length - 1) {
+                    setCurrentQuestion(currentQuestion + 1);
+                    setShowRationale(false);
+                    setSelectedOption(null);
+                } else {
+                    setStage('result');
+                }
+            };
+
+            return (
+                <div className="min-h-screen bg-gray-50 flex flex-col items-center p-4 md:p-8">
+                    <div className="max-w-3xl w-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+
+                        {/* Header */}
+                        <div className="bg-slate-800 p-6 text-white text-center border-b border-slate-700">
+                            <h1 className="text-xl font-bold uppercase tracking-wide">Effortless Vietnamese - Teaching Methodology</h1>
+                            <p className="text-slate-400 text-sm mt-1">Hệ Thống Đào Tạo Giảng Viên & Phương Pháp Luận</p>
+                        </div>
+
+                        {/* Content Stages */}
+                        <div className="p-8">
+
+                            {stage === 'landing' && (
+                                <div className="text-center">
+                                    <div className="text-5xl mb-6">�</div>
+                                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Module Đào Tạo: Phương Pháp CI & TPRS</h2>
+                                    <div className="text-left bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8 text-gray-600 text-sm leading-relaxed">
+                                        <p className="mb-2"><strong>Mục tiêu module:</strong> Trang bị kiến thức nền tảng về phương pháp Comprehensible Input (Đầu vào dễ hiểu) và TPRS (Teaching Proficiency through Reading and Storytelling).</p>
+                                        <p><strong>Đối tượng:</strong> Giảng viên nòng cốt & Cộng sự phát triển nội dung.</p>
+                                    </div>
+                                    <button
+                                        onClick={() => setStage('lesson')}
+                                        className="w-full md:w-auto px-8 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-colors shadow-sm"
+                                    >
+                                        Bắt Đầu Nghiên Cứu Chương Trình ➡️
+                                    </button>
+                                </div>
+                            )}
+
+                            {stage === 'lesson' && (
+                                <div className="space-y-6">
+                                    <div className="flex justify-between items-center border-b pb-4">
+                                        <h2 className="text-lg font-bold text-gray-800">Khung Chương Trình (Syllabus Framework)</h2>
+                                        <button onClick={() => setStage('quiz')} className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded border border-slate-300 transition-colors">Chuyển sang Kiểm tra Kiến thức</button>
+                                    </div>
+
+                                    <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                                        {lessons.map((l, i) => (
+                                            <div key={i} className="p-4 rounded-lg border border-gray-100 bg-white hover:border-blue-200 hover:bg-blue-50 transition-all flex gap-4 items-start">
+                                                <div className="text-2xl pt-1 opacity-80">{l.icon}</div>
+                                                <div>
+                                                    <h3 className="font-semibold text-gray-800 text-sm uppercase tracking-wide">{l.title}</h3>
+                                                    <p className="text-sm text-gray-600 mt-1 leading-relaxed">{l.content}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="pt-4 border-t mt-4">
+                                        <button
+                                            onClick={() => setStage('quiz')}
+                                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-colors shadow-sm text-center"
+                                        >
+                                            Tiến Hành Bài Kiểm Tra (Assessment) ✅
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {stage === 'quiz' && (
+                                <div>
+                                    <div className="flex justify-between items-center mb-6">
+                                        <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Question {currentQuestion + 1} of {quizData.length}</span>
+                                        <div className="w-32 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                            <div
+                                                className="h-full bg-blue-600 transition-all duration-300"
+                                                style={{ width: `${((currentQuestion + 1) / quizData.length) * 100}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
+
+                                    <h2 className="text-lg font-bold text-gray-800 mb-6 leading-relaxed min-h-[4rem]">{quizData[currentQuestion].question}</h2>
+
+                                    <div className="space-y-3">
+                                        {quizData[currentQuestion].options.map((opt, i) => (
+                                            <button
+                                                key={i}
+                                                disabled={showRationale}
+                                                onClick={() => handleAnswer(opt.isCorrect, i)}
+                                                className={`w-full text-left p-4 rounded-lg border transition-all flex items-center justify-between group
+                                                    ${selectedOption === i
+                                                        ? (opt.isCorrect ? 'border-green-500 bg-green-50 text-green-800' : 'border-red-500 bg-red-50 text-red-800')
+                                                        : 'border-gray-200 hover:border-blue-300 hover:bg-blue-50 text-gray-700'}
+                                                    ${showRationale && opt.isCorrect ? 'border-green-500 bg-green-50 text-green-800' : ''}
+                                                `}
+                                            >
+                                                <span className="text-sm font-medium">{opt.text}</span>
+                                                {selectedOption === i && (
+                                                    opt.isCorrect ? <span className="text-green-600">✓</span> : <span className="text-red-600">✕</span>
+                                                )}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    {showRationale && (
+                                        <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100 text-sm">
+                                            <p className="text-blue-900 leading-relaxed">
+                                                <span className="font-bold uppercase text-xs tracking-wide block mb-1 text-blue-700">Giải thích (Rationale):</span>
+                                                {quizData[currentQuestion].rationale}
+                                            </p>
+                                            <button
+                                                onClick={nextQuestion}
+                                                className="mt-4 px-6 py-2 bg-blue-600 text-white rounded text-sm font-medium hover:bg-blue-700 transition-colors"
+                                            >
+                                                Next Question ➡️
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+                            {stage === 'result' && (
+                                <div className="text-center py-6">
+                                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <span className="text-3xl text-blue-600">📊</span>
+                                    </div>
+                                    <h2 className="text-2xl font-bold text-gray-800 mb-2">Đánh Giá Hoàn Tất</h2>
+                                    <p className="text-gray-600 mb-8">Kết quả kiểm tra: <span className="font-bold text-blue-600">{score}/{quizData.length}</span></p>
+
+                                    <div className="bg-gray-50 p-6 rounded-lg text-left mb-8 border border-gray-200">
+                                        <h3 className="font-bold text-gray-800 mb-3 text-sm uppercase">Kế hoạch hành động tiếp theo (Next Steps):</h3>
+                                        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-4">
+                                            <li>Ôn tập lại các nguyên tắc TPRS và 10 Module bài giảng.</li>
+                                            <li>Chuẩn bị danh sách đạo cụ (Props List) cho buổi quay thử nghiệm.</li>
+                                            <li>Nghiên cứu tài liệu kịch bản chi tiết (Detailed Script).</li>
+                                        </ul>
+                                    </div>
+
+                                    <button
+                                        onClick={() => {
+                                            setStage('landing');
+                                            setCurrentQuestion(0);
+                                            setScore(0);
+                                            setShowRationale(false);
+                                            setSelectedOption(null);
+                                        }}
+                                        className="text-blue-600 text-sm font-medium hover:underline hover:text-blue-800 transition-colors"
+                                    >
+                                        Tải lại Module Đào tạo
+                                    </button>
+                                </div>
+                            )}
+
+                        </div>
+                    </div>
+
+                    <footer className="mt-8 text-center text-xs text-gray-400">
+                        <p>© 2024 Effortless Vietnamese Project. All Rights Reserved.</p>
+                        <p className="mt-1 opacity-70">Internal Training Document | Version 1.2 (Academic Edition)</p>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

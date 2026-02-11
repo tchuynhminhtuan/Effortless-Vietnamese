@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gear Guide - Printable</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            line-height: 1.4;
+            max-width: 100%;
+            margin: 20px;
+            color: #000;
+        }
+        h1, h2 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .header-box {
+            border: 2px solid #000;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+            vertical-align: top;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+            font-weight: bold;
+        }
+        
+        /* Column Widths (Approximate) */
+        th:nth-child(1), td:nth-child(1) { width: 10%; } /* Segment */
+        th:nth-child(2), td:nth-child(2) { width: 10%; } /* Time */
+        th:nth-child(3), td:nth-child(3) { width: 35%; } /* Visual */
+        th:nth-child(4), td:nth-child(4) { width: 30%; } /* Audio */
+        th:nth-child(5), td:nth-child(5) { width: 15%; } /* Note */
+
+        /* Print Styles */
+        @media print {
+            body { margin: 0; }
+            .header-box { background-color: white !important; }
+            th { background-color: white !important; font-weight: bold; border-bottom: 2px solid black; }
+            a { text-decoration: none; color: black; }
+            h1, h2 { page-break-after: avoid; }
+            table { page-break-inside: auto; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+        }
+        
+        .gesture-box {
+            border: 1px dashed #666;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hướng dẫn Thiết bị &amp; Setup (Production Guide) - <em>Lazy Style</em></h1>
+<blockquote>
+<p><strong>Tôn chỉ</strong>: "Thiết bị tốt nhất là thiết bị bạn đang có. Đừng đợi mua máy xịn mới quay."
+Tuy nhiên, <strong>ÂM THANH LÀ VUA</strong>. Hình có thể mờ, nhưng tiếng phải trong.</p>
+</blockquote>
+<hr />
+<h2>1. MÁY QUAY (CAMERA) - SMARTPHONE LÀ ĐỦ</h2>
+<p>Bạn không cần máy ảnh Sony/Canon ngàn đô. iPhone/Samsung đời mới là dư sức.</p>
+<h3>Cài đặt Chuẩn (Settings):</h3>
+<ul>
+<li><strong>Độ phân giải</strong>: <strong>4K</strong> (để có thể crop/zoom khi edit mà không vỡ hình).</li>
+<li><strong>Tốc độ khung hình (Frame Rate)</strong>: <strong>24fps</strong> (hoặc 25fps). <em>Tuyệt đối không quay 60fps</em> (nhìn sẽ giống bản tin thời sự, mất chất điện ảnh chill).</li>
+<li><strong>Grid (Lưới)</strong>: <strong>BẬT</strong>. Để canh bố cục 1/3.</li>
+<li><strong>Khóa sáng (AE/AF Lock)</strong>: <strong>QUAN TRỌNG</strong>. Chạm và giữ vào mặt nhân vật để khóa nét &amp; khóa sáng. Tránh tình trạng sáng tối thất thường khi tạy di chuyển.</li>
+</ul>
+<hr />
+<h2>2. ÂM THANH (AUDIO) - ĐẦU TƯ SỐ 1</h2>
+<p>Micro điện thoại ở xa &gt; 0.5m là vứt đi. Bạn cần <strong>Micro cài áo (Lavalier)</strong>.</p>
+<h3>Gợi ý Thiết bị:</h3>
+<ul>
+<li><strong>Cao cấp</strong>: DJI Mic 2 / Rode Wireless Pro (Thu âm 32-bit float, không bao giờ vỡ tiếng).</li>
+<li><strong>Tầm trung</strong>: Rode Wireless Go II / Saramonic Blink.</li>
+<li><strong>Giá rẻ (Nhưng ổn)</strong>: Boya BY-V2 / GoChek (Dành cho điện thoại).</li>
+</ul>
+<h3>Kỹ thuật thu âm:</h3>
+<ul>
+<li><strong>Vị trí</strong>: Kẹp ở cổ áo, cách miệng khoảng 15-20cm (một gang tay).</li>
+<li><strong>Giấu mic?</strong>: Không cần thiết. Kẹp lộ thiên cũng được, khán giả ngày nay quen với việc thấy mic rồi.</li>
+<li><strong>Test</strong>: Hét to thử xem có bị rè không (Clipping). Nếu rè, giảm Gain xuống -6dB hoặc -12dB.</li>
+</ul>
+<hr />
+<h2>3. ÁNH SÁNG (LIGHTING) - TỰ NHIÊN LÀ ĐẸP NHẤT</h2>
+<p>Lazy Style ưa chuộng ánh sáng mềm (Soft light).</p>
+<h3>Setup Ban ngày (Window Light):</h3>
+<ul>
+<li>Ngồi <strong>Ngang</strong> hoặc <strong>Chếch 45 độ</strong> với cửa sổ.</li>
+<li><em>Tránh</em>: Ngồi quay lưng với cửa sổ (Ngược sáng -&gt; Mặt đen thui).</li>
+<li><em>Tránh</em>: Ánh nắng gắt chiếu thẳng vào mặt (Bị nheo mắt, bóng đổ gắt). Dùng rèm mỏng (Sheer) để làm mềm ánh sáng.</li>
+</ul>
+<h3>Setup Ban đêm (Artificial Light):</h3>
+<ul>
+<li>Nếu bắt buộc quay đêm, đừng dùng đèn trần (Overhead light) -&gt; Tạo hốc mắt gấu trúc.</li>
+<li>Dùng đèn bàn (Lamp) đặt ngang tầm mắt, chếch 45 độ.</li>
+<li>Dùng đèn lồng/đèn vàng (Practical lights) ở hậu cảnh (Background) để tạo chiều sâu và độ "chill".</li>
+</ul>
+<hr />
+<h2>4. BỐ CỤC (COMPOSITION) &amp; DIỄN XUẤT</h2>
+<ul>
+<li><strong>Khung hình</strong>: Quay ngang (16:9) cho YouTube.</li>
+<li><strong>Góc máy</strong>: Ngang tầm mắt (Eye-level). Đừng đặt máy quá thấp (nọng cằm) hoặc quá cao.</li>
+<li><strong>Khoảng cách</strong>: Trung cảnh (Medium Shot) - Từ ngực lên đầu. Đủ gần để thấy biểu cảm, đủ xa để thấy cử chỉ tay (Hand Gestures).</li>
+<li><strong>Mắt (Eye Contact)</strong>: Nhìn vào <strong>LỖ CAMERA</strong> nhỏ xíu, đừng nhìn vào màn hình thấy mặt mình.</li>
+</ul>
+<hr />
+<h2>5. BACKGROUND (HẬU CẢNH)</h2>
+<ul>
+<li>Không cần studio phông xanh.</li>
+<li><strong>Bếp, Sofa, Ban công, Giá sách</strong> là tuyệt nhất.</li>
+<li>Sự bừa bộn có kiểm soát (Organized Chaos) tạo cảm giác đời thực (Authentic). Đừng quá chải chuốt.</li>
+</ul>
+</body>
+</html>
